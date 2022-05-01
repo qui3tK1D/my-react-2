@@ -1,5 +1,6 @@
 import { Component } from "react";
 import user1 from "../images/user.jpg";
+import { Link } from "react-router-dom";
 
 class PostCard extends Component {
   render() {
@@ -11,6 +12,7 @@ class PostCard extends Component {
               <div className="col-auto">
                 <img
                   src={user1}
+                  alt="user"
                   style={{ width: "72px", height: "72px" }}
                 ></img>
               </div>
@@ -21,13 +23,18 @@ class PostCard extends Component {
               </div>
 
               <div className="col-auto d-flex gap-3">
-                <button className="btn btn-sm btn-primary shadow-sm">
-                  <i className="fa fa-eye"></i>
-                </button>
+                <Link to={`/post/${this.props.data.id}`}>
+                  <button className="btn btn-sm btn-primary shadow-sm">
+                    <i className="fa fa-eye"></i>
+                  </button>
+                </Link>
                 <button className="btn btn-sm btn-light shadow-sm">
                   <i className="fa fa-edit"></i>
                 </button>
-                <button className="btn btn-sm btn-danger shadow-sm">
+                <button
+                  className="btn btn-sm btn-danger shadow-sm"
+                  onClick={() => this.props.onDelete(this.props.data.id)}
+                >
                   <i className="fa fa-trash"></i>
                 </button>
               </div>
@@ -38,5 +45,6 @@ class PostCard extends Component {
     );
   }
 }
+// /post/:id
 
 export default PostCard;
