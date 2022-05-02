@@ -23,14 +23,22 @@ class PostCard extends Component {
               </div>
 
               <div className="col-auto d-flex gap-3">
-                <Link to={`/post/${this.props.data.id}`}>
+                <Link
+                  to={`/post/${this.props.data.id}`}
+                  state={this.props.data}
+                >
                   <button className="btn btn-sm btn-primary shadow-sm">
                     <i className="fa fa-eye"></i>
                   </button>
                 </Link>
-                <button className="btn btn-sm btn-light shadow-sm">
-                  <i className="fa fa-edit"></i>
-                </button>
+                <Link
+                  to={`/editpost/${this.props.data.id}`}
+                  state={this.props.data}
+                >
+                  <button className="btn btn-sm btn-light shadow-sm">
+                    <i className="fa fa-edit"></i>
+                  </button>
+                </Link>
                 <button
                   className="btn btn-sm btn-danger shadow-sm"
                   onClick={() => this.props.onDelete(this.props.data.id)}
